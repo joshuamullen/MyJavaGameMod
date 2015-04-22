@@ -27,6 +27,10 @@ public class GameManager extends GameCore {
     	startMenu = new StartMenu();
     	startMenu.setVisible(true);
     
+    	
+    	
+    	
+    	
     	while(!exitGame)
     	{
 	        try
