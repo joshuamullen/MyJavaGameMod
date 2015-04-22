@@ -18,14 +18,6 @@ public class Queue {
 
 	private Vector queue;
 	 
-	
-	
-	
-	
-	
-	
-	
-	
 	public Queue ()  
 	{
         queue = new Vector();
