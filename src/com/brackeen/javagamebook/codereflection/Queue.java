@@ -17,6 +17,14 @@ import java.util.*;
 public class Queue {
 
 	private Vector queue;
+	 
+	
+	
+	
+	
+	
+	
+	
 	
 	public Queue ()  
 	{
