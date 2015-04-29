@@ -19,18 +19,16 @@ import com.brackeen.javagamebook.codereflection.*;
 /**
     GameManager manages all parts of the game.
 */
-public class GameManager extends GameCore {
-	private boolean showFPS=true;
+public class GameManager extends GameCore
+{
+	private boolean showFPS = true;
 	
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
     	
     	startMenu = new StartMenu();
     	startMenu.setVisible(true);
     
-    	
-    	
-    	
-    	
     	while(!exitGame)
     	{
 	        try
@@ -101,13 +99,24 @@ public class GameManager extends GameCore {
     private SoundManager soundManager;
     private ResourceManager resourceManager;
     
-    private Sound starSound;
+    //*********************************************************************
+  	// I'm temporarily disabling this attribute, and replacing it with books
+    //private Sound starSound;
+    private Sound bookSound;
+    //*********************************************************************
+    
     private Sound boopSound;
     private Sound noteSound;
     private Sound warpSound;
     private Sound endOfLevelSound;
     private Sound dieSound;
-    private Sound healthSound;
+    
+    //*********************************************************************
+  	// I'm temporarily disabling this attribute, and replacing it with brain
+    //private Sound healthSound;
+    private Sound brainSound;
+    //*********************************************************************
+
     private Sound hurtSound;
     
     private InputManager inputManager;
@@ -140,7 +149,8 @@ public class GameManager extends GameCore {
     
     private Sequence sequence;
 
-    public void init() {
+    public void init()
+    {
         super.init();
         
         health=START_HEALTH;
@@ -149,25 +159,37 @@ public class GameManager extends GameCore {
 
         // start resource manager
       
-        resourceManager = new ResourceManager(
-        screen.getFullScreenWindow().getGraphicsConfiguration());
+        resourceManager = new ResourceManager(screen.getFullScreenWindow().getGraphicsConfiguration());
 
         // load resources
         renderer = new TileMapRenderer();
-        renderer.setBackground(
-            resourceManager.loadImage(resourceManager.levelBackground()));
+        renderer.setBackground(resourceManager.loadImage(resourceManager.levelBackground()));
         // load first map
         map = resourceManager.loadNextMap();
 
         // load sounds
         soundManager = new SoundManager(PLAYBACK_FORMAT);
-        starSound = soundManager.getSound("sounds/"+resourceManager.getStarSound());
+        
+        //*********************************************************************
+    	// I'm temporarily disabling this attribute, and replacing it with books
+        //starSound = soundManager.getSound("sounds/"+resourceManager.getStarSound());
+        
+        bookSound = soundManager.getSound("sounds/"+resourceManager.getBookSound());
+        //*********************************************************************
+        
         boopSound = soundManager.getSound("sounds/"+resourceManager.getBoopSound());
         noteSound = soundManager.getSound("sounds/"+resourceManager.getNoteSound());
         warpSound = soundManager.getSound("sounds/"+resourceManager.getWarpSound());
         endOfLevelSound = soundManager.getSound("sounds/"+resourceManager.getEndOfLevelSound());
         dieSound = soundManager.getSound("sounds/"+resourceManager.getDieSound());
-        healthSound = soundManager.getSound("sounds/"+resourceManager.getHealthSound());
+        
+        //*********************************************************************
+    	// I'm temporarily disabling this attribute, and replacing it with brains
+        //healthSound = soundManager.getSound("sounds/"+resourceManager.getHealthSound());
+        
+        brainSound = soundManager.getSound("sounds/"+resourceManager.getBookSound());
+        //*********************************************************************
+        
         hurtSound = soundManager.getSound("sounds/"+resourceManager.getHurtSound());
         
         // start music
@@ -605,7 +627,17 @@ public class GameManager extends GameCore {
         super.stop();
         midiPlayer.close();
         soundManager.close();
-        scoreBoard.setStarTotal(0);
+        
+		//*********************************************************************
+		// I'm temporarily disabling this attribute, and replacing it with books
+        //scoreBoard.setStarTotal(0);
+        
+		//*********************************************************************
+	    // Josh's added book scoreBoard                                       *
+	    //*********************************************************************
+        scoreBoard.setBookTotal(0);
+        //*********************************************************************
+        
         this.baseScoreMultiplier=1.0f;
 		scoreBoard.setMultiplier(this.baseScoreMultiplier);
 		scoreBoard.setScore(0);
@@ -885,8 +917,16 @@ public class GameManager extends GameCore {
         		
         		totalElapsedTime = 0;
         		
-        		//reset Star total
-        		scoreBoard.setStarTotal(0);
+        		//*********************************************************************
+        		// I'm temporarily disabling this attribute, and replacing it with books
+        		//scoreBoard.setStarTotal(0);
+                
+        		//*********************************************************************
+        	    // Josh's added book scoreBoard                                       *
+        	    //*********************************************************************
+                scoreBoard.setBookTotal(0);
+                //*********************************************************************
+        		
             	try{
                 	Thread.sleep(750);	
                 }catch(Exception io){};
@@ -1190,9 +1230,17 @@ public class GameManager extends GameCore {
 	            	
 	            		player.consecutiveHits=0;
 	            		totalElapsedTime = 0;
+	            		         		
+	            		//*********************************************************************
+	            		// I'm temporarily disabling this attribute, and replacing it with books
+	            		//scoreBoard.setStarTotal(0);
+	                    
+	            		//*********************************************************************
+	            	    // Josh's added book scoreBoard                                       *
+	            	    //*********************************************************************
+	                    scoreBoard.setBookTotal(0);
+	                    //*********************************************************************
 	            		
-	            		//reset Star total
-	            		scoreBoard.setStarTotal(0);
 	            	}else 
 	            		{ 
 	            			hitClock=MAX_HIT_CLOCK;
@@ -1210,7 +1258,8 @@ public class GameManager extends GameCore {
         Gives the player the speicifed power up and removes it
         from the map.
     */
-    public void acquirePowerUp(PowerUp powerUp) {  	
+    public void acquirePowerUp(PowerUp powerUp)
+    {  	
     	if(CodeReflection.isTracing() && TilegamePackageTracingEnabled.getTilegamePackageTracingEnabledInstance().isEnabled()) {
         	if(CodeReflection.getAbstactionLevel()>=0)
         	{//check to make sure it's this level of abstraction
@@ -1222,6 +1271,9 @@ public class GameManager extends GameCore {
         // remove it from the map
         map.removeSprite(powerUp);
 
+		//*********************************************************************
+		// I'm temporarily disabling this code section, and replacing it with books
+        /*
         if (powerUp instanceof PowerUp.Star) {
             scoreBoard.addScore(5);
             if(scoreBoard.getStarTotal()==99)
@@ -1239,6 +1291,30 @@ public class GameManager extends GameCore {
             		soundManager.play(starSound);
             }
         }
+        */
+        
+		//*********************************************************************
+	    // Josh's added book management                                       *
+	    //*********************************************************************
+        if (powerUp instanceof PowerUp.Book) {
+            scoreBoard.addScore(5);
+            if(scoreBoard.getBookTotal()==99)
+            {//if you collect 99 books, add to health
+            	
+            	if(SOUND_ON)
+            		soundManager.play(bookSound);
+            	scoreBoard.setBookTotal(0);
+            	if(health!=HEALTH_MAX)
+            		health++;
+            }
+            else{
+            	scoreBoard.setBookTotal(scoreBoard.getBookTotal()+1);
+            	if(SOUND_ON)
+            		soundManager.play(bookSound);
+            }
+        }
+        //*********************************************************************
+        
         else if (powerUp instanceof PowerUp.Music) {
             // change the music
         	if(SOUND_ON)
@@ -1246,6 +1322,10 @@ public class GameManager extends GameCore {
         	map.getPlayer().setX(map.getPlayer().getX()+4000);
             //toggleDrumPlayback();
         }
+        
+		//*********************************************************************
+		// I'm temporarily disabling this code section, and replacing it with brain
+        /*
         else if (powerUp instanceof PowerUp.Health)
         {
         	if(SOUND_ON)
@@ -1253,6 +1333,18 @@ public class GameManager extends GameCore {
         	if(health != HEALTH_MAX)
         		health++;
         }
+        */
+        
+        else if (powerUp instanceof PowerUp.Brain)
+        {
+        	if(SOUND_ON)
+        		soundManager.play(brainSound);
+        	if(health != HEALTH_MAX)
+        		health++;
+        }
+        
+		//*********************************************************************
+        
         else if (powerUp instanceof PowerUp.Goal) {
             // advance to next map
         

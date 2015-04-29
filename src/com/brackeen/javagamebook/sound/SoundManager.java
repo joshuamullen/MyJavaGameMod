@@ -1,11 +1,10 @@
+
 package com.brackeen.javagamebook.sound;
 
 import java.io.*;
 import javax.sound.sampled.*;
 import com.brackeen.javagamebook.util.ThreadPool;
 import com.brackeen.javagamebook.util.LoopingByteInputStream;
-
-
 
 /**
     The SoundManager class manages sound playback. The
@@ -41,8 +40,7 @@ public class SoundManager extends ThreadPool {
         Creates a new SoundManager with the specified maximum
         number of simultaneous sounds.
     */
-    public SoundManager(AudioFormat playbackFormat,
-        int maxSimultaneousSounds)
+    public SoundManager(AudioFormat playbackFormat, int maxSimultaneousSounds)
     {
         super(Math.min(maxSimultaneousSounds,
             getMaxSimultaneousSounds(playbackFormat)));
@@ -51,7 +49,8 @@ public class SoundManager extends ThreadPool {
         localBuffer = new ThreadLocal();
         pausedLock = new Object();
         // notify threads in pool it's ok to start
-        synchronized (this) {
+        synchronized (this)
+        {
             notifyAll();
         }
     }
@@ -129,7 +128,8 @@ public class SoundManager extends ThreadPool {
         Loads a Sound from the file system. Returns null if an
         error occurs.
     */
-    public Sound getSound(String filename) {
+    public Sound getSound(String filename)
+    {
         return getSound(getAudioInputStream(filename));
     }
 
@@ -138,7 +138,8 @@ public class SoundManager extends ThreadPool {
         Loads a Sound from an input stream. Returns null if an
         error occurs.
     */
-    public Sound getSound(InputStream is) {
+    public Sound getSound(InputStream is)
+    {
         return getSound(getAudioInputStream(is));
     }
 
@@ -146,23 +147,26 @@ public class SoundManager extends ThreadPool {
     /**
         Loads a Sound from an AudioInputStream.
     */
-    public Sound getSound(AudioInputStream audioStream) {
-        if (audioStream == null) {
+    public Sound getSound(AudioInputStream audioStream)
+    {
+        if (audioStream == null)
+        {
             return null;
         }
 
         // get the number of bytes to read
-        int length = (int)(audioStream.getFrameLength() *
-            audioStream.getFormat().getFrameSize());
+        int length = (int)(audioStream.getFrameLength() * audioStream.getFormat().getFrameSize());
 
         // read the entire stream
         byte[] samples = new byte[length];
         DataInputStream is = new DataInputStream(audioStream);
-        try {
+        try 
+        {
             is.readFully(samples);
             is.close();
         }
-        catch (IOException ex) {
+        catch (IOException ex)
+        {
             ex.printStackTrace();
         }
 
@@ -175,12 +179,14 @@ public class SoundManager extends ThreadPool {
         Creates an AudioInputStream from a sound from the file
         system.
     */
-    public AudioInputStream getAudioInputStream(String filename) {
-        try {
-            return getAudioInputStream(
-                new FileInputStream(filename));
+    public AudioInputStream getAudioInputStream(String filename)
+    {
+        try
+        {
+            return getAudioInputStream(new FileInputStream(filename));
         }
-        catch (IOException ex) {
+        catch (IOException ex)
+        {
             ex.printStackTrace();
             return null;
         }
@@ -191,10 +197,13 @@ public class SoundManager extends ThreadPool {
         Creates an AudioInputStream from a sound from an input
         stream
     */
-    public AudioInputStream getAudioInputStream(InputStream is) {
+    public AudioInputStream getAudioInputStream(InputStream is)
+    {
 
-        try {
-            if (!is.markSupported()) {
+        try
+        {
+            if (!is.markSupported())
+            {
                 is = new BufferedInputStream(is);
             }
             // open the source stream
@@ -202,8 +211,7 @@ public class SoundManager extends ThreadPool {
                 AudioSystem.getAudioInputStream(is);
 
             // convert to playback format
-            return AudioSystem.getAudioInputStream(
-                playbackFormat, source);
+            return AudioSystem.getAudioInputStream(playbackFormat, source);
         }
         catch (UnsupportedAudioFileException ex) {
             ex.printStackTrace();

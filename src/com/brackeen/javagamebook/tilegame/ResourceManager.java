@@ -26,10 +26,27 @@ public class ResourceManager {
     // host sprites used for cloning
     private Sprite playerSprite;
     private Sprite musicSprite;
-    private Sprite coinSprite;
+    
+	//*********************************************************************
+	// I'm temporarily disabling this attribute, and replacing it with books
+    //private Sprite coinSprite;
+
     private Sprite goalSprite;
     private Sprite warpSprite;
+    
+    //*********************************************************************
+    // I'm temporarily disabling this attribute, and replacing it with brain
+    /*
     private Sprite healthSprite;
+    */
+    
+    //*********************************************************************
+    // Josh's added sprites                                               *
+    //*********************************************************************    
+    private Sprite bookSprite; // same as star, but school themed
+    private Sprite brainSprite; // same as health, but school themed
+    // Line 282 starts checking for which sprites you want to use.
+    //*********************************************************************
     
     private Sprite[] enemySprites;
     private ScriptManager s;
@@ -210,8 +227,7 @@ public class ResourceManager {
     }
 
 
-    private TileMap loadMap(String filename)
-        throws IOException
+    private TileMap loadMap(String filename) throws IOException
     {
     	if(CodeReflection.isTracing() && TilegamePackageTracingEnabled.getTilegamePackageTracingEnabledInstance().isEnabled()) {
         	if(CodeReflection.getAbstactionLevel()>=0)
@@ -257,19 +273,44 @@ public class ResourceManager {
                     newMap.setTile(x, y, (Image)tiles.get(tile));
                 }
 
+                //*********************************************************************
+                // Josh's added sprite logic                                          *
+                //*********************************************************************
+                else if(ch == '+')
+                {
+                	addSprite(newMap, brainSprite, x, y);
+                }
+                else if(ch == '@')
+                {
+                	addSprite(newMap, bookSprite, x, y);
+                }
+                // On line 788, I found more on loading sprites into your map. 
+                //*********************************************************************
+                
                 // check if the char represents a sprite
+                
+                //*********************************************************************
+            	// I'm temporarily disabling this attribute, and replacing it with books
+                /*
                 else if (ch == 'o') {
                     addSprite(newMap, coinSprite, x, y);
                 }
+                */
+                
                 else if (ch == '!') {
                     addSprite(newMap, musicSprite, x, y);
                 }
                 else if (ch == '*') {
                     addSprite(newMap, goalSprite, x, y);
                 }
+                //*********************************************************************
+            	// I'm temporarily disabling this attribute, and replacing it with brain
+                /*
                 else if (ch == '^') {
                     addSprite(newMap, healthSprite, x, y);
                 }
+                */
+                
                 else if ((ch>='0')&&(ch<='9')){
                 	((PowerUp.Warp)warpSprite).setWarpValue((ch-'0')+2+currentMap);
                 	addSprite(newMap, warpSprite, x, y);
@@ -538,6 +579,9 @@ public class ResourceManager {
     	return(s.getSoundByReference("boop"));
     }
     
+    //*********************************************************************
+	// I'm temporarily disabling this attribute, and replacing it with books
+    /*
     public String getStarSound()
     {	//return the sound for the star
     	if(CodeReflection.isTracing() && TilegamePackageTracingEnabled.getTilegamePackageTracingEnabledInstance().isEnabled()) {
@@ -550,6 +594,34 @@ public class ResourceManager {
     	}
     	return(s.getSoundByReference("star"));
     }
+    */
+    public String getBookSound()
+    {	//return the sound for the book
+    	if(CodeReflection.isTracing() && TilegamePackageTracingEnabled.getTilegamePackageTracingEnabledInstance().isEnabled()) {
+        	if(CodeReflection.getAbstactionLevel()>=0)
+        	{//check to make sure it's this level of abstraction
+        		e.fillInStackTrace();		
+        		CodeReflection.registerMethod(e.getStackTrace()[0].getClassName(),
+        								e.getStackTrace()[0].getMethodName());
+        	}
+    	}
+    	return(s.getSoundByReference("book"));
+    }
+    
+    public String getBrainSound()
+    {	//return the sound for receiving a health powerup
+    	if(CodeReflection.isTracing() && TilegamePackageTracingEnabled.getTilegamePackageTracingEnabledInstance().isEnabled()) {
+        	if(CodeReflection.getAbstactionLevel()>=0)
+        	{//check to make sure it's this level of abstraction
+        		e.fillInStackTrace();		
+        		CodeReflection.registerMethod(e.getStackTrace()[0].getClassName(),
+        								e.getStackTrace()[0].getMethodName());
+        	}
+    	}
+    	return(s.getSoundByReference("brain"));
+    }
+    
+    //*********************************************************************
     
     public String getNoteSound()
     {	//return the sound for the note
@@ -603,6 +675,7 @@ public class ResourceManager {
     	return(s.getSoundByReference("die"));
     }
     
+    /*
     public String getHealthSound()
     {	//return the sound for receiving a health powerup
     	if(CodeReflection.isTracing() && TilegamePackageTracingEnabled.getTilegamePackageTracingEnabledInstance().isEnabled()) {
@@ -615,6 +688,7 @@ public class ResourceManager {
     	}
     	return(s.getSoundByReference("health"));
     }
+    */
     
     public String getHurtSound()
     {	//return the sound for receiving damage, but not dying
@@ -765,6 +839,9 @@ public class ResourceManager {
         anim.addFrame(loadImage(s.getItemImage("eol",4)), 150);
         goalSprite = new PowerUp.Goal(anim);
 
+        //*********************************************************************
+        // I'm temporarily disabling this attribute, and replacing it with books
+        /*
         // create "star" sprite
         anim = new Animation();
         anim.addFrame(loadImage(s.getItemImage("coin",1)), 100);
@@ -772,6 +849,7 @@ public class ResourceManager {
         anim.addFrame(loadImage(s.getItemImage("coin",3)), 100);
         anim.addFrame(loadImage(s.getItemImage("coin",4)), 100);
         coinSprite = new PowerUp.Star(anim);
+        */
 
         // create "music" sprite
         anim = new Animation();
@@ -789,6 +867,9 @@ public class ResourceManager {
         anim.addFrame(loadImage(s.getItemImage("warp",4)), 55);
         warpSprite = new PowerUp.Warp(anim);
         
+        //*********************************************************************
+        // I'm temporarily disabling this attribute, and replacing it with books
+        /*
         // create health sprite
         anim = new Animation();
         anim.addFrame(loadImage(s.getItemImage("health",1)),100);
@@ -796,6 +877,28 @@ public class ResourceManager {
         anim.addFrame(loadImage(s.getItemImage("health",3)),100);
         anim.addFrame(loadImage(s.getItemImage("health",4)),100);
         healthSprite = new PowerUp.Health(anim);
+        */
+        
+        //*********************************************************************
+        // Josh's added sprites loaded                                        *
+        //*********************************************************************
+        // Add to PowerUp.java in javagamebook.tilegame.sprites package
+        // create "book" sprite
+        anim = new Animation();
+        anim.addFrame(loadImage(s.getItemImage("book",1)), 100);
+        anim.addFrame(loadImage(s.getItemImage("book",2)), 100);
+        anim.addFrame(loadImage(s.getItemImage("book",3)), 100);
+        anim.addFrame(loadImage(s.getItemImage("book",4)), 100);
+        bookSprite = new PowerUp.Book(anim);
+
+        // create "brain" sprite
+        anim = new Animation();
+        anim.addFrame(loadImage(s.getItemImage("brain",1)), 100);
+        anim.addFrame(loadImage(s.getItemImage("brain",2)), 100);
+        anim.addFrame(loadImage(s.getItemImage("brain",3)), 100);
+        anim.addFrame(loadImage(s.getItemImage("brain",4)), 100);
+        brainSprite = new PowerUp.Brain(anim);
+        //*********************************************************************
         
     }
 	 public void setLevelMappingFile(String scriptFile)

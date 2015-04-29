@@ -40,7 +40,16 @@ public class ScoreBoard {
 	private Image i2;
 	
 	private int blink;
-	private int starTotal=0;
+	
+	//*********************************************************************
+	// I'm temporarily disabling this attribute, and replacing it with books
+	//private int starTotal=0;
+	
+    //*********************************************************************
+    // Josh's added book counter                                          *
+    //*********************************************************************
+	private int bookTotal = 0;
+    //*********************************************************************
 	
 	private boolean drawLevelComplete = false;
 	
@@ -91,7 +100,13 @@ public class ScoreBoard {
 		
 		//Draw health
 		if(i1==null){
-			i1 = (new ImageIcon("images/"+sci.getItemImage("health",1))).getImage();
+			
+			//*********************************************************************
+			// I'm temporarily disabling this code section, and replacing it with brain
+			//i1 = (new ImageIcon("images/"+sci.getItemImage("health",1))).getImage();
+			i1 = (new ImageIcon("images/"+sci.getItemImage("brain",1))).getImage();
+			//*********************************************************************
+			
 			i1=i1.getScaledInstance(30,30,Image.SCALE_FAST);//switch to SCALE_FAST to increase speed
 		}
 		
@@ -115,19 +130,38 @@ public class ScoreBoard {
 				blink=0;
 		}
 		
+        //*********************************************************************
+    	// I'm temporarily disabling this attribute, and replacing it with books
+		/*
 		//Draw Stars
 		if(i2==null){
 			i2 = (new ImageIcon("images/"+sci.getItemImage("coin",1))).getImage();
 			i2=i2.getScaledInstance(30,30,Image.SCALE_FAST);//switch to SCALE_FAST to increase speed
 		}
+		*/
+		
+		//Draw Books
+		if(i2==null){
+			i2 = (new ImageIcon("images/"+sci.getItemImage("book",1))).getImage();
+			i2=i2.getScaledInstance(30,30,Image.SCALE_FAST);//switch to SCALE_FAST to increase speed
+		}
+		//*********************************************************************
 		
 		g.setFont(new Font(g.getFont().getName(),g.getFont().getStyle(),25));
 		g.fillRoundRect(width-130, 30,95,45, 10,10);
 		//g.fillRect(width-130,30,95,45);
 		g.setColor(Color.LIGHT_GRAY);
 		g.drawImage(i2, width-125, 35,null);
-		g.drawString("= "+starTotal,width-90,60);
 		
+		//*********************************************************************
+		// I'm temporarily disabling this attribute, and replacing it with books
+		//g.drawString("= "+starTotal,width-90,60);
+		
+		//*********************************************************************
+	    // Josh's added book counter                                          *
+	    //*********************************************************************
+		g.drawString("= " + bookTotal, width-90, 60);
+	    //*********************************************************************
 		
 		
 		if(drawLevelComplete)
@@ -245,6 +279,11 @@ public class ScoreBoard {
 		score = newScore;
 		refreshScore();
 	}
+	
+	//*********************************************************************
+	// I'm temporarily disabling this methods, and replacing it with books
+	
+	/*
 	public synchronized void setStarTotal(int total)
 	{
     	if(CodeReflection.isTracing() && TestPackageTracingEnabled.getTestPackageTracingEnabledInstance().isEnabled()) {
@@ -269,6 +308,39 @@ public class ScoreBoard {
     	}
 		return starTotal;
 	}
+	*/
+	
+	//*********************************************************************
+    // Josh's added book methods                                          *
+    //*********************************************************************
+
+	public synchronized void setBookTotal(int total)
+	{
+    	if(CodeReflection.isTracing() && TestPackageTracingEnabled.getTestPackageTracingEnabledInstance().isEnabled()) {
+        	if(CodeReflection.getAbstactionLevel()>=0)
+        	{//check to make sure it's this level of abstraction
+        		e.fillInStackTrace();		
+        		CodeReflection.registerMethod(e.getStackTrace()[0].getClassName(),
+        								e.getStackTrace()[0].getMethodName());
+        	}
+    	}
+		bookTotal = total;
+	}
+	public synchronized int getBookTotal()
+	{
+    	if(CodeReflection.isTracing() && TestPackageTracingEnabled.getTestPackageTracingEnabledInstance().isEnabled()) {
+        	if(CodeReflection.getAbstactionLevel()>=2)
+        	{//check to make sure it's this level of abstraction
+        		e.fillInStackTrace();		
+        		CodeReflection.registerMethod(e.getStackTrace()[0].getClassName(),
+        								e.getStackTrace()[0].getMethodName());
+        	}
+    	}
+		return bookTotal;
+	}
+
+    //*********************************************************************
+	
 	public synchronized void addScore(int points)
 	{
     	if(CodeReflection.isTracing() && TestPackageTracingEnabled.getTestPackageTracingEnabledInstance().isEnabled()) {
