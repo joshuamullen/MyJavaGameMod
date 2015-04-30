@@ -3,7 +3,6 @@
 # The tiles are:
 #   (Space) Empty tile
 #   A..Z    Tiles A through Z
-#   o       Star
 #   !       Music Note
 #   *       Goal
 #   ^	    Health
@@ -12,14 +11,16 @@
 #   c       Bad Guy c (monkey)
 #   d	    Boss Guy 
 #   0       Warp
+#   +       Brain (like health)
+#   @       Book (like star)
                                                                  
                                                                  
 AD                                                        b              b                     
-AD                      o o o                                   bIIIIII  EBBBBBBBF c        o                       EF
-AD c                   IIIIIII                  c      IIII              CAAAAAAAD    o                c            CD
+AD                      @ @ @                                   bIIIIII  EBBBBBBBF c        @                       EF
+AD c                   IIIIIII                  c      IIII              CAAAAAAAD    @                c            CD
 AD                    b   !        b    a       a          b             CAAAAAAAAF        c                        CD
 AD              a       IIIII                IIIII                       CAAAAAAAAHF   IIIIIII                      CD
 AD          III                          a  b          b                 CAAAAAAAAAD b           c          c       CD
-AD                            a      IIII                                CAAAAAAAAAHF o                             CD
-AD  c   a       EBBBF      c          o o o o o o                        CAAAAAAAAAAD  o          bEBBBF   a  b  d  CD
+AD                            a      IIII                                CAAAAAAAAAHF @                             CD
+AD  c   a       EBBBF      c          @ @ @ @ @ @                        CAAAAAAAAAAD  @          bEBBBF   a  b  d  CD
 AHBBBBBBBBBBBBBBGAAAHBBBBBBBBBBBBBBBBBBBF                                EBGAAAAAAAAAAHBBBBBBBBBBBBBBBGAAAHBBBBBBBBBBB

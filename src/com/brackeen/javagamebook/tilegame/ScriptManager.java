@@ -232,16 +232,12 @@ public class ScriptManager
 			    	// I'm temporarily disabling healthImages, and replacing it with brain
 					while((line=reader.readLine()).charAt(0)=='#');//skip comments
 					//healthImages[0]=line.substring(line.indexOf(">")+1,line.length());
-					brainImages[0]=line.substring(line.indexOf(">")+1,line.length());
 					while((line=reader.readLine()).charAt(0)=='#');//skip comments
 					//healthImages[1]=line.substring(line.indexOf(">")+1,line.length());
-					brainImages[1]=line.substring(line.indexOf(">")+1,line.length());
 					while((line=reader.readLine()).charAt(0)=='#');//skip comments
 					//healthImages[2]=line.substring(line.indexOf(">")+1,line.length());
-					brainImages[2]=line.substring(line.indexOf(">")+1,line.length());
 					while((line=reader.readLine()).charAt(0)=='#');//skip comments
 					//healthImages[3]=line.substring(line.indexOf(">")+1,line.length());
-					brainImages[3]=line.substring(line.indexOf(">")+1,line.length());
 				}
 				*/
 				
@@ -452,13 +448,11 @@ public class ScriptManager
 	    	}
 	    	
         //*********************************************************************
-    	// I'm temporarily disabling this attribute, and replacing it with books
+    	// I'm temporarily disabling this attribute, and replacing it with book
 	    /*
 	 	if(name.compareTo("coin")==0)
 	 		return(coinImages[number-1]);
-	 	*/
 	    // I'm temporarily disabling this attribute, and replacing it with brain
-	 	/*
 	 	if(name.compareTo("health")==0)
 	 		return(healthImages[number-1]);
 	 	*/

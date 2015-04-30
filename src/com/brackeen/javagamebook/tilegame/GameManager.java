@@ -187,7 +187,7 @@ public class GameManager extends GameCore
     	// I'm temporarily disabling this attribute, and replacing it with brains
         //healthSound = soundManager.getSound("sounds/"+resourceManager.getHealthSound());
         
-        brainSound = soundManager.getSound("sounds/"+resourceManager.getBookSound());
+        brainSound = soundManager.getSound("sounds/"+resourceManager.getBrainSound());
         //*********************************************************************
         
         hurtSound = soundManager.getSound("sounds/"+resourceManager.getHurtSound());
