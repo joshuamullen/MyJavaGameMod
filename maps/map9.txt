@@ -10,6 +10,9 @@
 #   b       Bad Guy b (fly)
 #   c       Bad Guy c (monkey)
 #   d	    Boss Guy 
+#   e		Bad Guy (sinuousfly)
+#   f		Bad Guy (homingfly)
+#   g		Bad Guy (randomfly)
 #   0       Warp
 #   +       Brain (like health)
 #   @       Book (like star)
