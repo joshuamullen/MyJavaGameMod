@@ -82,6 +82,7 @@ public class ScriptManager
 	    
 	    imageIndex=3;//Init
 	    archIndex=0; //init
+	    
 	    //Load enemy image names and archtypes
 		while ((line=reader.readLine()) != null) 
 		{

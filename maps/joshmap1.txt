@@ -12,14 +12,17 @@
 #   e		Bad Guy (sinuousfly)
 #   f		Bad Guy (homingfly)
 #   g		Bad Guy (randomfly)
+#	i		flyingCalculator
+#	j		binaryDeathBall
 #   0       Warp
 #   +       Brain (like health)
 #   @       Book (like star)
-
-+
-F                                                            f                                     I
-HF                                                                                                 I
-AHF                   g               EBBF       I   h             I      e  b   III               I
-AAHF                          EBBBBBBBGAAD                                  III                    I
-AAAHF @  @  @  @  @  @  @ @  EGAAAAAAAAAAD               II           III             I          * I
-AAAAHBBBBBBBBBBBBBBBBBBBBBBBBGAAAAAAAAAAAHBBBBBBBBBB   II  II    III                      I   I  III
+						
+						                                                                     
+					 					   												 		
+F                 i    @j+ i     @j@       i                            i                    I
+HF             @j@     IIII     @EBBF        @@                        jj           i        I
+AHF           IIII             @EGAAD      i@EF               i@       II@@         i        I
+AAHF                          @EGAAAD     i@EGD    @   i@     II         II@@                I
+AAAHF  @j@  @j@  @j@  @j@    @EGAAAAD+j j jEGAD   II   II                  II@@     i      * I
+AAAAHBBBBBBBBBBBBBBBBBBBBBBBBBGAAAAAHBBBBBBGAAD                              II     I      III

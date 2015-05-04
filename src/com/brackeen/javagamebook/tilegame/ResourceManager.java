@@ -479,6 +479,21 @@ public class ResourceManager {
             	if(s.getArchType(x).compareTo("balloon")==0)
             		enemyAnim[x][i]=createFlyAnim(
             				images[i][imageIndex++], images[i][imageIndex++], images[i][imageIndex++]);
+            
+            //*********************************************************************
+            // Josh's added sprite logic                                          *
+            //*********************************************************************
+            
+            	else
+            	if(s.getArchType(x).compareTo("flyingCalculator")==0)
+            		enemyAnim[x][i]=createCalcAnim(
+            				images[i][imageIndex++], images[i][imageIndex++], images[i][imageIndex++], images[i][imageIndex++]);
+            	else
+            	if(s.getArchType(x).compareTo("binaryDeathBall")==0)
+            		enemyAnim[x][i] = createBallAnim(
+            				images[i][imageIndex++], images[i][imageIndex++], images[i][imageIndex++], images[i][imageIndex++]);	
+            //*********************************************************************
+            
         }
 
         // create creature sprites
@@ -521,6 +536,19 @@ public class ResourceManager {
             if(s.getArchType(x).compareTo("balloon")==0)
             	enemySprites[x]=new Balloon(enemyAnim[x][0], enemyAnim[x][1],
             			enemyAnim[x][2], enemyAnim[x][3]);
+        
+        //*********************************************************************
+        // Josh's added sprite logic                                          *
+        //*********************************************************************
+        else
+        if(s.getArchType(x).compareTo("binaryDeathBall")==0)
+    		enemySprites[x]=new BinaryDeathBall(enemyAnim[x][0], enemyAnim[x][1],
+    				enemyAnim[x][2], enemyAnim[x][3]);
+        else
+        if(s.getArchType(x).compareTo("flyingCalculator")==0)
+            enemySprites[x]=new FlyingCalculator(enemyAnim[x][0], enemyAnim[x][1],
+            		enemyAnim[x][2], enemyAnim[x][3]);
+        //*********************************************************************
     }
     
     public String levelBackground()
@@ -821,6 +849,51 @@ public class ResourceManager {
          
             return anim;
         }
+    
+    //*********************************************************************
+    // Josh's added sprite logic                                          *
+    //*********************************************************************
+    
+    private Animation createCalcAnim(Image img1, Image img2,
+            Image img3, Image img4)
+        {
+        	if(CodeReflection.isTracing() && TilegamePackageTracingEnabled.getTilegamePackageTracingEnabledInstance().isEnabled()) {
+            	if(CodeReflection.getAbstactionLevel()>=0)
+            	{//check to make sure it's this level of abstraction
+            		e.fillInStackTrace();		
+            		CodeReflection.registerMethod(e.getStackTrace()[0].getClassName(),
+            								e.getStackTrace()[0].getMethodName());
+            	}
+        	}
+            Animation anim = new Animation();
+            anim.addFrame(img1, 50);
+            anim.addFrame(img2, 50);
+            anim.addFrame(img3, 50);
+            anim.addFrame(img4, 50);
+            return anim;
+        }
+
+
+        private Animation createBallAnim(Image img1, Image img2,
+                Image img3, Image img4)
+        {
+        	if(CodeReflection.isTracing() && TilegamePackageTracingEnabled.getTilegamePackageTracingEnabledInstance().isEnabled()) {
+            	if(CodeReflection.getAbstactionLevel()>=0)
+            	{//check to make sure it's this level of abstraction
+            		e.fillInStackTrace();		
+            		CodeReflection.registerMethod(e.getStackTrace()[0].getClassName(),
+            								e.getStackTrace()[0].getMethodName());
+            	}
+        	}
+            Animation anim = new Animation();
+            anim.addFrame(img1, 50);
+            anim.addFrame(img2, 50);
+            anim.addFrame(img3, 50);
+            anim.addFrame(img4, 50);
+            return anim;
+        }
+    
+    //*********************************************************************
     
     private void loadPowerUpSprites() {
     	if(CodeReflection.isTracing() && TilegamePackageTracingEnabled.getTilegamePackageTracingEnabledInstance().isEnabled()) {

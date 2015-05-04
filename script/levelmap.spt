@@ -3,16 +3,16 @@
 #Level's start at 1 go up incrementally by 1....
 # > denotes the name of the map that holds the textfile
 ####################################
-#Number of Maps (I changed it from 14 to 15)
-15
+#Number of Maps (I changed it from 14 to 10)
+10
 ####################################
 #Maps themselves
 1 >joshmap1.txt
 >CrazyMathDimension.png
->music2.midi
-2 >map2.txt
->background.png
->music.mid
+>chaosrealm.mid
+2 >joshmap2.txt
+>CrazyMathDimension.png
+>chaosrealm.mid
 3 >map2.txt
 >background2.png
 >music2.midi
@@ -36,19 +36,4 @@
 >music2.midi
 10 >map6.txt
 >background.png
->music2.midi
-11 >map6.txt
->background2.png
->music.mid
-12 >map7.txt
->background.png
->music2.midi
-13 >map7.txt
->background2.png
->music.mid
-14 >map1.txt
->background.png
->music2.midi
-15 >map1.txt
->background2.png
 >music2.midi
