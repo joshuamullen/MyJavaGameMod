@@ -1,11 +1,12 @@
 package com.brackeen.javagamebook.tilegame.sprites;
 
-import com.brackeen.javagamebook.codereflection.CodeReflection;
 import com.brackeen.javagamebook.graphics.Animation;
+import com.brackeen.javagamebook.codereflection.*;
 
-public class Grub extends Creature {
-	
-	public Grub(Animation left, Animation right, Animation deadLeft,
+
+public class Pencil extends Creature {
+
+	public Pencil(Animation left, Animation right, Animation deadLeft,
 			Animation deadRight) {
 		super(left, right, deadLeft, deadRight);
 		if(CodeReflection.isTracing() && SpritesPackageTracingEnabled.getSpritesPackageTracingEnabledInstance().isEnabled()) {
@@ -28,6 +29,9 @@ public class Grub extends Creature {
         								e.getStackTrace()[0].getMethodName());
         	}
     	}
-        return 0.05f * enemySpeedMultiplier;
+        return 0.25f * enemySpeedMultiplier;
     }
+	
 }
+
+
