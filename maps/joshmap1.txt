@@ -20,9 +20,9 @@
 						
 						                                                                     
 					 					   												 		
-F                 i    @j+ i     @j@       i                            i                    I
-HF             @j@     IIII     @EBBF        @@                        jj           i        I
-AHF           IIII             @EGAAD      i@EF               i@       II@@         i        I
-AAHF                          @EGAAAD     i@EGD    @   i@     II         II@@                I
-AAAHF  @j@  @j@  @j@  @j@    @EGAAAAD+j j jEGAD   II   II                  II@@     i      * I
-AAAAHBBBBBBBBBBBBBBBBBBBBBBBBBGAAAAAHBBBBBBGAAD                              II     I      III
+K                 i    @j+ i     @j@       i                            i                    M
+LK             @j@     MMMM     @KKKK        @@                        jj           i        M
+LLK           MMMM             @KLLLK      i@KK               i@       MM@@         i        M
+LLLK                          @KLLLLK     i@KLK    @   i@     MM         MM@@                M
+LLLLK  @j@  @j@  @j@  @j@    @KLLLLLK+j j jKLLK   MM   MM                  MM@@     i      * M
+LLLLLKKKKKKKKKKKKKKKKKKKKKKKKKKLLLLLKKKKKKKKLLK                              MM     M      MMM

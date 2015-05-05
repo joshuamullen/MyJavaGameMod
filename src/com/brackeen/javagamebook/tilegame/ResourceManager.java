@@ -932,12 +932,13 @@ public class ResourceManager {
         anim.addFrame(loadImage(s.getItemImage("note",4)), 150);
         musicSprite = new PowerUp.Music(anim);
         
+        // Changed from 55 to 100
         // create warp sprite
         anim = new Animation();
-        anim.addFrame(loadImage(s.getItemImage("warp",1)), 55);
-        anim.addFrame(loadImage(s.getItemImage("warp",2)), 55);
-        anim.addFrame(loadImage(s.getItemImage("warp",3)), 55);
-        anim.addFrame(loadImage(s.getItemImage("warp",4)), 55);
+        anim.addFrame(loadImage(s.getItemImage("warp",1)), 125);
+        anim.addFrame(loadImage(s.getItemImage("warp",2)), 125);
+        anim.addFrame(loadImage(s.getItemImage("warp",3)), 125);
+        anim.addFrame(loadImage(s.getItemImage("warp",4)), 125);
         warpSprite = new PowerUp.Warp(anim);
         
         //*********************************************************************
