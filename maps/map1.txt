@@ -3,15 +3,17 @@
 # The tiles are:
 #   (Space) Empty tile
 #   A..Z    Tiles A through Z
-#   o       Star
 #   !       Music Note
 #   *       Goal
-#   ^	    Health
 #   a       Bad Guy a (grub)
 #   b       Bad Guy b (fly)
 #   c       Bad Guy c (monkey)
-#   d	    Boss Guy 
-                                                                 
+#   d	    Boss Guy
+#   e		Bad Guy (sinuousfly)
+#   f		Bad Guy (homingfly)
+#   g		Bad Guy (randomfly) 
+#   +       Brain (like health)
+#   @       Book (like star)                                        
                                               
 
                                                 b   b   
@@ -20,4 +22,4 @@
                                     b    b             b
           b b b  b   b    b    b                        b 
   ^                                                      b    d
-BBBBBB                                                      BBBBBB
+BBBBBBBB                                                      BBBBBB

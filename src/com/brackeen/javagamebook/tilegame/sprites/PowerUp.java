@@ -1,6 +1,7 @@
 package com.brackeen.javagamebook.tilegame.sprites;
 
 import java.lang.reflect.Constructor;
+
 import com.brackeen.javagamebook.graphics.*;
 import com.brackeen.javagamebook.codereflection.*;
 
@@ -46,10 +47,12 @@ public abstract class PowerUp extends Sprite {
         }
     }
 
-
     /**
         A Star PowerUp. Gives the player points.
     */
+    //*********************************************************************
+  	// I'm temporarily disabling this attribute, and replacing it with books
+    /*
     public static class Star extends PowerUp {
         public Star(Animation anim) {
             super(anim);
@@ -63,8 +66,52 @@ public abstract class PowerUp extends Sprite {
         	}
         }
     }
+	*/
 
+    //*********************************************************************
+    // Josh's added sprites PowerUp methods                               *
+    //*********************************************************************
+    
+    /**
+    A Book PowerUp. Gives the player points.
+	*/
+	public static class Book extends PowerUp
+	{
+	    public Book(Animation anim)
+	    {
+	        super(anim);
+	    	if(CodeReflection.isTracing() && SpritesPackageTracingEnabled.getSpritesPackageTracingEnabledInstance().isEnabled()) {
+	        	if(CodeReflection.getAbstactionLevel()>=1)
+	        	{//check to make sure it's this level of abstraction
+	        		e.fillInStackTrace();		
+	        		CodeReflection.registerMethod(e.getStackTrace()[0].getClassName(),
+	        								e.getStackTrace()[0].getMethodName());
+	        	}
+	    	}
+	    }
+	}
 
+    /**
+     * A Brain PowerUp, when received will increase the hits
+     * you can take before dying
+     */
+    public static class Brain extends PowerUp
+	{
+    	public Brain(Animation anim)
+    	{
+    		super(anim);
+        	if(CodeReflection.isTracing() && SpritesPackageTracingEnabled.getSpritesPackageTracingEnabledInstance().isEnabled()) {
+            	if(CodeReflection.getAbstactionLevel()>=1)
+            	{//check to make sure it's this level of abstraction
+            		e.fillInStackTrace();		
+            		CodeReflection.registerMethod(e.getStackTrace()[0].getClassName(),
+            								e.getStackTrace()[0].getMethodName());
+            	}
+        	}
+    	}
+	}
+    //*********************************************************************
+    
     /**
         A Music PowerUp. Changes the game music.
     */

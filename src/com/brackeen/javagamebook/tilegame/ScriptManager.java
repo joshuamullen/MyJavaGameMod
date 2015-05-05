@@ -35,11 +35,21 @@ public class ScriptManager
     private String[] levelMusic;
     private String[][] itemSounds;
     
-    private String[] coinImages;
+    //*********************************************************************
+	// I'm temporarily disabling these attributes, and replacing them with book and brain
+    //private String[] coinImages;
+    //private String[] healthImages;
+    
+    //*********************************************************************
+    // Josh's added String array for images                               *
+    //*********************************************************************
+    private String[] bookImages;
+    private String[] brainImages;
+    //*********************************************************************
+    
     private String[] noteImages;
     private String[] eolImages;
     private String[] warpImages;
-    private String[] healthImages;
     
     private int soundArrayLength;
     private Throwable e = new Throwable();
@@ -72,6 +82,7 @@ public class ScriptManager
 	    
 	    imageIndex=3;//Init
 	    archIndex=0; //init
+	    
 	    //Load enemy image names and archtypes
 		while ((line=reader.readLine()) != null) 
 		{
@@ -146,17 +157,30 @@ public class ScriptManager
 		reader = new BufferedReader(
 	            new FileReader("script/items.spt"));
 		
-		coinImages = new String[4]; //init size 4 (4 frames of animation)
+        //*********************************************************************
+		// I'm temporarily disabling these attributes, and replacing them with book and brain
+		//coinImages = new String[4]; //init size 4 (4 frames of animation)
+		//healthImages = new String[4]; //init size 4 (4 frames of animation)
+		
+		//*********************************************************************
+	    // Josh's added String array for images                               *
+	    //*********************************************************************
+	    bookImages = new String[4];
+	    brainImages = new String[4];
+	    //*********************************************************************
+		
 		noteImages = new String[4]; //init size 4 (4 frames of animation)
 		warpImages = new String[4]; //init size 4 (4 frames of animation)
 		eolImages = new String[4]; //init size 4 (4 frames of animation)
-		healthImages = new String[4]; //init size 4 (4 frames of animation)
 				
 		while ((line=reader.readLine()) != null) 
 		{					
 		 // scan every line look for valid input
 			if(line.charAt(0)!='#')//skip comments
 			{
+		        //*********************************************************************
+		    	// I'm temporarily disabling this attribute, and replacing it with books
+				/*
 				if(line.compareTo("coin")==0)
 				{
 					while((line=reader.readLine()).charAt(0)=='#');//skip comments
@@ -167,7 +191,9 @@ public class ScriptManager
 					coinImages[2]=line.substring(line.indexOf(">")+1,line.length());
 					while((line=reader.readLine()).charAt(0)=='#');//skip comments
 					coinImages[3]=line.substring(line.indexOf(">")+1,line.length());
-				}else
+				}
+				*/
+				//else
 				if(line.compareTo("note")==0)
 				{
 					while((line=reader.readLine()).charAt(0)=='#');//skip comments
@@ -200,18 +226,50 @@ public class ScriptManager
 					eolImages[2]=line.substring(line.indexOf(">")+1,line.length());
 					while((line=reader.readLine()).charAt(0)=='#');//skip comments
 					eolImages[3]=line.substring(line.indexOf(">")+1,line.length());
-				}else
-				if(line.compareTo("health")==0)
+				}
+				/*
+				else if(line.compareTo("health")==0)
+				{
+			    	// I'm temporarily disabling healthImages, and replacing it with brain
+					while((line=reader.readLine()).charAt(0)=='#');//skip comments
+					//healthImages[0]=line.substring(line.indexOf(">")+1,line.length());
+					while((line=reader.readLine()).charAt(0)=='#');//skip comments
+					//healthImages[1]=line.substring(line.indexOf(">")+1,line.length());
+					while((line=reader.readLine()).charAt(0)=='#');//skip comments
+					//healthImages[2]=line.substring(line.indexOf(">")+1,line.length());
+					while((line=reader.readLine()).charAt(0)=='#');//skip comments
+					//healthImages[3]=line.substring(line.indexOf(">")+1,line.length());
+				}
+				*/
+				
+			    //*********************************************************************
+			    // Josh's added String array logic for images                         *
+			    //*********************************************************************
+				else if(line.compareTo("book")==0)
 				{
 					while((line=reader.readLine()).charAt(0)=='#');//skip comments
-					healthImages[0]=line.substring(line.indexOf(">")+1,line.length());
+					bookImages[0]=line.substring(line.indexOf(">")+1,line.length());
 					while((line=reader.readLine()).charAt(0)=='#');//skip comments
-					healthImages[1]=line.substring(line.indexOf(">")+1,line.length());
+					bookImages[1]=line.substring(line.indexOf(">")+1,line.length());
 					while((line=reader.readLine()).charAt(0)=='#');//skip comments
-					healthImages[2]=line.substring(line.indexOf(">")+1,line.length());
+					bookImages[2]=line.substring(line.indexOf(">")+1,line.length());
 					while((line=reader.readLine()).charAt(0)=='#');//skip comments
-					healthImages[3]=line.substring(line.indexOf(">")+1,line.length());
+					bookImages[3]=line.substring(line.indexOf(">")+1,line.length());
 				}
+				
+				else if(line.compareTo("brain")==0)
+				{
+					while((line=reader.readLine()).charAt(0)=='#');//skip comments
+					brainImages[0]=line.substring(line.indexOf(">")+1,line.length());
+					while((line=reader.readLine()).charAt(0)=='#');//skip comments
+					brainImages[1]=line.substring(line.indexOf(">")+1,line.length());
+					while((line=reader.readLine()).charAt(0)=='#');//skip comments
+					brainImages[2]=line.substring(line.indexOf(">")+1,line.length());
+					while((line=reader.readLine()).charAt(0)=='#');//skip comments
+					brainImages[3]=line.substring(line.indexOf(">")+1,line.length());
+				}
+			    //*********************************************************************
+
 			}
 		}
 		reader.close();
@@ -378,6 +436,7 @@ public class ScriptManager
 	 	}
 	 	return null;
 	 }
+	 
 	 public String getItemImage(String name, int number)
 	 {	//get the type of image it is, and return the name of the image based on which one (number)
 	    	if(CodeReflection.isTracing() && InputPackageTracingEnabled.getInputPackageTracingEnabledInstance().isEnabled()) {
@@ -388,16 +447,32 @@ public class ScriptManager
 	        								e.getStackTrace()[0].getMethodName());
 	        	}
 	    	}
+	    	
+        //*********************************************************************
+    	// I'm temporarily disabling this attribute, and replacing it with book
+	    /*
 	 	if(name.compareTo("coin")==0)
 	 		return(coinImages[number-1]);
+	    // I'm temporarily disabling this attribute, and replacing it with brain
+	 	if(name.compareTo("health")==0)
+	 		return(healthImages[number-1]);
+	 	*/
+	    	
 	 	if(name.compareTo("note")==0)
 	 		return(noteImages[number-1]);
 	 	if(name.compareTo("warp")==0)
 	 		return(warpImages[number-1]);
 	 	if(name.compareTo("eol")==0)
 	 		return(eolImages[number-1]);
-	 	if(name.compareTo("health")==0)
-	 		return(healthImages[number-1]);
+	 	
+	    //*********************************************************************
+	    // Josh's added String array logic for images                         *
+	    //*********************************************************************
+	 	if(name.compareTo("book")==0)
+	 		return(bookImages[number-1]);
+	 	if(name.compareTo("brain")==0)
+	 		return(brainImages[number-1]);
+	 	//*********************************************************************
 	 	return (null);
 	 }
 	 

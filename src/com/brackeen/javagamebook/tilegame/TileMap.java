@@ -13,7 +13,8 @@ import com.brackeen.javagamebook.codereflection.*;
     Image. Of course, Images are used multiple times in the tile
     map.
 */
-public class TileMap {
+public class TileMap
+{
 
     private Image[][] tiles;
     private LinkedList sprites;

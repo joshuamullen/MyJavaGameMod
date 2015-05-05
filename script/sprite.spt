@@ -12,10 +12,10 @@
 # > denotes the name of the picture
 ####################################
 #Total Enemies/Helpers
-8
+10
 ####################################
 #Total Sprite Images (including player sprites)
-26
+34
 ####################################
 #Player
 >player1.png
@@ -77,3 +77,19 @@ balloon
 >balloon.png
 >balloon.png
 >balloon.png
+####################################
+####################################
+#i
+flyingCalculator
+>cal0.png
+>cal1.png
+>cal2.png
+>cal3.png
+####################################
+####################################
+#j
+binaryDeathBall
+>binaryDeathBall1.png
+>binaryDeathBall2.png
+>binaryDeathBall3.png
+>binaryDeathBall4.png

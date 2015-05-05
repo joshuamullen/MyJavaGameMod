@@ -6,7 +6,8 @@ import com.brackeen.javagamebook.codereflection.*;
 /**
     A Fly is a Creature that fly slowly in the air.
 */
-public class Fly extends Creature {
+public class Fly extends Creature
+{
 
 //    private Throwable e = new Throwable();
     
@@ -14,7 +15,8 @@ public class Fly extends Creature {
         Animation deadLeft, Animation deadRight)
     {
         super(left, right, deadLeft, deadRight);
-    	if(CodeReflection.isTracing() && SpritesPackageTracingEnabled.getSpritesPackageTracingEnabledInstance().isEnabled()) {
+    	if(CodeReflection.isTracing() && SpritesPackageTracingEnabled.getSpritesPackageTracingEnabledInstance().isEnabled())
+    	{
         	if(CodeReflection.getAbstactionLevel()>=1)
         	{//check to make sure it's this level of abstraction
         		e.fillInStackTrace();		

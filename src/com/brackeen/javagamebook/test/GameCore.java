@@ -8,7 +8,8 @@ import com.brackeen.javagamebook.graphics.ScreenManager;
     Simple abstract class used for testing. Subclasses should
     implement the draw() method.
 */
-public abstract class GameCore {
+public abstract class GameCore
+{
 
     protected static final int FONT_SIZE = 24;
 
@@ -38,7 +39,8 @@ public abstract class GameCore {
     /**
         Signals the game loop that it's time to quit
     */
-    public void stop() {
+    public void stop()
+    {
         isRunning = false;
     }
 
@@ -46,12 +48,15 @@ public abstract class GameCore {
     /**
         Calls init() and gameLoop()
     */
-    public void run() {
-        try {
+    public void run()
+    {
+        try
+        {
             init();
             gameLoop();
         }
-        finally {
+        finally
+        {
              screen.restoreScreen();
 //            lazilyExit();
         }
@@ -64,11 +69,15 @@ public abstract class GameCore {
         System.exit(0) is only called if neccesary. It's neccesary
         if the Java Sound system is running.
     */
-    public void lazilyExit() {
-        Thread thread = new Thread() {
-            public void run() {
+    public void lazilyExit() 
+    {
+        Thread thread = new Thread()
+        {
+            public void run() 
+            {
                 // first, wait for the VM exit on its own.
-                try {
+                try 
+                {
                     Thread.sleep(2000);
                 }
                 catch (InterruptedException ex) { }
@@ -96,17 +105,20 @@ public abstract class GameCore {
     /**
         Sets full screen mode and initiates and objects.
     */
-    public void init() {
+    public void init() 
+    {
         screen = new ScreenManager();
         //screenResolution = new Dimension();
-        DisplayMode displayMode = 
-        	new DisplayMode(screenResolution.width, screenResolution.height, colorDepth, 0);
+        DisplayMode displayMode = new DisplayMode(screenResolution.width, screenResolution.height, colorDepth, 0);
         //    screen.findFirstCompatibleMode(POSSIBLE_MODES);
-        if(fullScreen) {
+        if(fullScreen)
+        {
         	screen.setFullScreen(displayMode);
         }
-        else {
-        	if(toolScreen) {
+        else 
+        {
+        	if(toolScreen) 
+        	{
         		screen.setToolWindow(displayMode);
         	}
         	screen.setWindowedScreen(displayMode);
@@ -120,7 +132,8 @@ public abstract class GameCore {
     }
 
 
-    public Image loadImage(String fileName) {
+    public Image loadImage(String fileName) 
+    {
         return new ImageIcon(fileName).getImage();
     }
 
@@ -132,12 +145,14 @@ public abstract class GameCore {
     /**
         Runs through the game loop until stop() is called.
     */
-    public void gameLoop() {
+    public void gameLoop() 
+    {
         long startTime = System.currentTimeMillis();
         long currTime = startTime;
         boolean switchPaint = true;
         
-        while (isRunning) {
+        while (isRunning) 
+        {
         	
         	while(!screen.frame().isFocused())
         	{
@@ -195,7 +210,8 @@ public abstract class GameCore {
         Updates the state of the game/animation based on the
         amount of elapsed time that has passed.
     */
-    public void update(long elapsedTime) {
+    public void update(long elapsedTime) 
+    {
         // do nothing
     }
 

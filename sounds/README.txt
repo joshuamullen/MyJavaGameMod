@@ -1,3 +1,9 @@
+
+
+
+
+
+
 Any WAV sounds must be in the following
 format to work:
 22050 hz, 16 bit, mono
